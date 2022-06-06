@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 my_list = [1,2,3,4,5,6]
-print(*my_list, sep="\n")
+print(*my_list.format("list of integers"), sep="\n")
 
 
