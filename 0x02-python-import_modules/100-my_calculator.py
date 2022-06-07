@@ -1,24 +1,40 @@
 #!/usr/bin/python3
-if __name__ == "__main__":
-    from calculator_1 import add, sub, mul, div
-    import sys
+from sys import argv
+from calculator_1 import add, sub, mul, div
 
-    num_args = len(sys.argv)
-    if num_args != 4:
-        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        exit(1)
-    a = int(sys.argv[1])
-    op = sys.argv[2]
-    b = int(sys.argv[3])
+if __name__ == '__main__':
+    """
+    Handles basic operations
+    Performs basic operations like addition, substraction,
+    multiplication and division between two numbers.
+    The program will execute an operation between two numbers
+    selected by the operator sent to the program.
+    """
+    l_av = len(argv) - 1
 
-    if op is '+':
-        print("{} {} {} = {}".format(a, op, b, add(a, b)))
-    elif op is '-':
-        print("{} {} {} = {}".format(a, op, b, sub(a, b)))
-    elif op is '*':
-        print("{} {} {} = {}".format(a, op, b, mul(a, b)))
-    elif op is '/':
-        print("{} {} {} = {}".format(a, op, b, div(a, b)))
+    if l_av == 3:
+        operator = argv[2]
+        num_a = int(argv[1])
+        num_b = int(argv[3])
+        if operator == '+':
+            res = add(num_a, num_b)
+            print('{:d} + {:d} = {:d}'.format(num_a, num_b, res))
+            exit(0)
+        elif operator == '-':
+            res = sub(num_a, num_b)
+            print('{:d} - {:d} = {:d}'.format(num_a, num_b, res))
+            exit(0)
+        elif operator == '*':
+            res = mul(num_a, num_b)
+            print('{:d} * {:d} = {:d}'.format(num_a, num_b, res))
+            exit(0)
+        elif operator == '/':
+            res = div(num_a, num_b)
+            print('{:d} / {:d} = {:d}'.format(num_a, num_b, res))
+            exit(0)
+        else:
+            print('Unknown operator. Available operators: +, -, * and /')
+            exit(1)
     else:
-        print("Unknown operator. Available operators: +, -, * and /")
+        print('Usage: ./100-my_calculator.py <a> <operator> <b>')
         exit(1)
