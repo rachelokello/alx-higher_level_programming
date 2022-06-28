@@ -1,28 +1,38 @@
 #!/usr/bin/python3
-# 1-rectangle.py
-"""Defines a Rectangle class."""
+"""
+Module creates the Rectangle class
+"""
 
 
 class Rectangle:
-    """Represent a rectangle."""
+    """
+    Class Rectangle with validated private instance attributes width and height
+    """
 
     def __init__(self, width=0, height=0):
-        """Initialize a new Rectangle.
+        """Instantiates width and height using property setter
         Args:
-            width (int): The width of the new rectangle.
-            height (int): The height of the new rectangle.
+            width: width of rectangle
+            height: height of rectangle
         """
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """Get/set the width of the rectangle."""
+        """width: width of rectangle
+        setter validates value is an integer >= 0
+        Parameter:
+            value: value of the width
+        Raises:
+            TypeError: if value is not an integer
+            ValueError: if value is < 0
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
@@ -30,12 +40,19 @@ class Rectangle:
 
     @property
     def height(self):
-        """Get/set the height of the rectangle."""
+        """height: height of rectangle
+        setter validates value is an integer >= 0
+        Parameter:
+            value: value of the height
+        Raises:
+            TypeError: if value is not an integer
+            ValueError: if value is < 0
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
